@@ -1,0 +1,22 @@
+[env]
+DATABASE_URL = ${DATABASE_URL}
+SUPABASE_KEY = ${SUPABASE_KEY}
+SUPABASE_URL = ${SUPABASE_URL}
+SUPABASE_SECRET = ${SUPABASE_SECRET}
+JWT_SECRET = ${JWT_SECRET}
+
+[variables]
+PORT = 8000
+
+[services]
+web = "uvicorn main:app --host 0.0.0.0 --port $PORT"
+
+[deploy]
+branch = "main"
+static_sites = []
+
+[build]
+command = "poetry install"
+
+[start]
+command = "railway run web"
